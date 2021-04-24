@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Text Shadows Using Shine.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i|Roboto');
+      body{
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Open Sans';
+      background-color: #f2f2f2;
+      }
+      .demo-text {
+      color: #fcfcfc;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 200px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      line-height: 4;
+      }
+      @media(max-width: 890px){
+      .demo-text{
+      font-size: 150px;
+      }
+      }
+      @media(max-width: 670px){
+      .demo-text{
+      font-size: 100px;
+      }
+      }
+      @media(max-width: 460px){
+      .demo-text{
+      font-size: 75px;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="w3hubs" class="demo-text">W3hubs</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shine.js/0.2.7/shine.min.js" ></script>
+    <script type="text/javascript">
+      var shine = new Shine(document.getElementById('w3hubs'));
+      function update() {
+        window.requestAnimationFrame(update);
+        var time = new Date().getTime();
+        var speed = 0.00025;
+        var phase = time * speed * 2.0 * Math.PI;
+        var radiusX = window.innerWidth * 0.5;
+        var radiusY = window.innerHeight * 0.5;
+        shine.light.position.x = radiusX + radiusX * Math.cos(phase);
+        shine.light.position.y = radiusY + radiusY * Math.sin(phase * 0.7);
+        shine.draw();
+      }
+      update();
+    </script>
+  </body>
+</html>
